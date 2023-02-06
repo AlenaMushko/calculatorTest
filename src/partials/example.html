@@ -1,10 +1,16 @@
 <section class="calc">
   <div class="container">
-    <div class="calc__wrap">
+    <div>
       <ul class="calc__list">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="calc__wrap">
+      <ul class="provider__list">
         <li>
-          <p class="calc__text"></p>
-          <div class="column column-backblaze" ></div>
           <svg class="calc__img">
             <use
               width="20"
@@ -29,15 +35,24 @@
           <h2 class="calc__title">bunny</h2>
           <fporm class="form-bunny">
             <label class="form__label"
-              >HDD<input class="form__input form__input--hdd checked" type="radio" name="name" value="HDD" checked
+              >HDD<input
+                class="form__input form__input--hdd checked"
+                type="radio"
+                name="name"
+                value="HDD"
+                checked
             /></label>
-            <label class="form__label">SSD<input class="form__input form__input--ssd" type="radio" name="name" value="SSD" /></label>
+            <label class="form__label"
+              >SSD<input
+                class="form__input form__input--ssd"
+                type="radio"
+                name="name"
+                value="SSD"
+            /></label>
           </fporm>
         </li>
 
         <li>
-          <p class="calc__text"></p>
-          <div class="column column-scaleway"></div>
           <svg class="calc__img">
             <use
               class="scaleway-img"
@@ -48,9 +63,20 @@
           </svg>
           <h2 class="calc__title">scaleway</h2>
           <fporm class="form-scaleway">
-            <label class="form__label">Multi<input class="form__input form__input--multi" type="radio" name="quntity" value="Multi" /></label>
             <label class="form__label"
-              >Single<input class="form__input form__input--single checked" type="radio" name="quntity" value="Single" checked
+              >Multi<input
+                class="form__input form__input--multi"
+                type="radio"
+                name="quntity"
+                value="Multi"
+            /></label>
+            <label class="form__label"
+              >Single<input
+                class="form__input form__input--single checked"
+                type="radio"
+                name="quntity"
+                value="Single"
+                checked
             /></label>
           </fporm>
         </li>
@@ -64,7 +90,6 @@
           <h2 class="calc__title">vultr</h2>
         </li>
       </ul>
-      <div class="line"></div>
     </div>
 
     <form class="calc__form">

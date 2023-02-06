@@ -7,10 +7,12 @@ export const refs = {
   inputSSD: document.querySelector('.form__input--ssd'),
   inputMulti: document.querySelector('.form__input--multi'),
   inputSingle: document.querySelector('.form__input--single'),
+  
   columnVultr: document.querySelector('.column-vultr'),
   columnScaleway: document.querySelector('.column-scaleway'),
   columnBunny: document.querySelector('.column-bunny'),
   columnBackblaze: document.querySelector('.column-backblaze'),
+  
   radio: document.querySelector('.radio'),
   calcFform: document.querySelector('.calc__form'),
   storageSpan: document.querySelector('.calc__span--storage'),
