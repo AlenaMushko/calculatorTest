@@ -53,6 +53,7 @@ function onHendlerChangeCalcForm(e) {
 }
 
 function backblazeColum() {
+  let murkup = ``;
   sizeBackblazeColum = (storage * 0.005 + transfer * 0.01).toFixed(2);
   sizeBackblazeColum <= 7 ? (sizeBackblazeColum = '7') : sizeBackblazeColum;
   window.innerWidth >= 768
@@ -76,6 +77,7 @@ function backblazeColum() {
 }
 
 function bunnyColum(form) {
+  let murkup = ``;
   const inputHDD = refs.inputHDD;
   const inputSSD = refs.inputSSD;
 
@@ -109,6 +111,7 @@ function bunnyColum(form) {
 }
 
 function scalewayColum(form) {
+  let murkup = ``;
   const inputMulti = refs.inputMulti;
   const inputSingle = refs.inputSingle;
 
@@ -152,6 +155,7 @@ function scalewayColum(form) {
 }
 
 function vultrColum() {
+  let murkup = ``;
   sizeVultrColum = (storage * 0.01 + transfer * 0.01).toFixed(2);
   sizeVultrColum <= 5 ? (sizeVultrColum = 5) : sizeVultrColum;
   window.innerWidth >= 768
