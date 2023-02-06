@@ -1,10 +1,10 @@
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { refs } from './refs';
 import { formHandler } from './formHandler';
 import { minColum } from './minColum';
 
-
- let storage = 0;
- let transfer = 0;
+let storage = 0;
+let transfer = 0;
 
 export let sizeBackblazeColum = 0;
 export let sizeBunnyColum = 0;
@@ -15,15 +15,21 @@ refs.calcFform.addEventListener('input', onHendlerChangeCalcForm);
 refs.formBunny.addEventListener('input', e => {
   bunnyColum(e.currentTarget);
   minColum(e.currentTarget);
+  Notify.info(
+    `The lowest cost of services in ${minColum(e.currentTarget)}.com`
+  );
 });
 
 refs.formScaleway.addEventListener('input', e => {
   scalewayColum(e.currentTarget);
   minColum(e.currentTarget);
+  Notify.info(
+    `The lowest cost of services in ${minColum(e.currentTarget)}.com`
+  );
 });
 
 function onHendlerChangeCalcForm(e) {
-  refs.column.classList.remove('orangered');
+  refs.columList.classList.remove('orangered');
 
   storage = Number(refs.calcFform.elements.storage.value);
   transfer = Number(refs.calcFform.elements.transfer.value);
@@ -43,20 +49,29 @@ function onHendlerChangeCalcForm(e) {
       ? columItems[i].classList.add('orangered')
       : columItems[i].classList.remove('orangered');
   }
+  Notify.info(`The lowest cost of services in ${minHeigthColum}.com`);
 }
 
 function backblazeColum() {
-sizeBackblazeColum = (storage * 0.005 + transfer * 0.01).toFixed(2);
+  sizeBackblazeColum = (storage * 0.005 + transfer * 0.01).toFixed(2);
   sizeBackblazeColum <= 7 ? (sizeBackblazeColum = '7') : sizeBackblazeColum;
-
-  const murkup = `
+  window.innerWidth >= 768
+    ? (murkup = `
+  <div class = "column__box">
+     <div class="column column-backblaze" style="width :${
+       sizeBackblazeColum * 10
+     }px"></div>
+     <p class="column__text">${sizeBackblazeColum}$</p>
+    </div>
+     `)
+    : (murkup = `
   <div class = "column__box">
      <div class="column column-backblaze" style="height :${
        sizeBackblazeColum * 10
      }px"></div>
      <p class="column__text">${sizeBackblazeColum}$</p>
     </div>
-     `;
+     `);
   refs.columList.children[0].innerHTML = murkup;
 }
 
@@ -77,13 +92,19 @@ function bunnyColum(form) {
     : (sizeBunnyColum = (storage * 0.02 + transfer * 0.01).toFixed(2));
 
   sizeBunnyColum <= 10 ? sizeBunnyColum : (sizeBunnyColum = '10');
-
-  const murkup = `
+  window.innerWidth >= 768
+    ? (murkup = `
+ <div class = "column__box">
+    <div class="column" style="width :${sizeBunnyColum * 10}px"></div>
+    <p class="column__text">${sizeBunnyColum}$</p>
+ </div>
+  `)
+    : (murkup = `
  <div class = "column__box">
     <div class="column" style="height :${sizeBunnyColum * 10}px"></div>
     <p class="column__text">${sizeBunnyColum}$</p>
  </div>
-  `;
+  `);
   refs.columList.children[1].innerHTML = murkup;
 }
 
@@ -110,31 +131,45 @@ function scalewayColum(form) {
       ).toFixed(2));
 
   storage <= 75 ? (sizeScalewayColum = 0) : sizeScalewayColum;
-
-  const murkup = `
+  window.innerWidth >= 768
+    ? (murkup = `
+  <div class = "column__box">
+    <div class="column column-scaleway" style="width :${
+      sizeScalewayColum * 10
+    }px"></div>
+    <p class="column__text">${sizeScalewayColum}$</p>
+  </div>
+    `)
+    : (murkup = `
   <div class = "column__box">
     <div class="column column-scaleway" style="height :${
       sizeScalewayColum * 10
     }px"></div>
     <p class="column__text">${sizeScalewayColum}$</p>
   </div>
-    `;
+    `);
   refs.columList.children[2].innerHTML = murkup;
 }
 
 function vultrColum() {
- sizeVultrColum = (storage * 0.01 + transfer * 0.01).toFixed(2);
+  sizeVultrColum = (storage * 0.01 + transfer * 0.01).toFixed(2);
   sizeVultrColum <= 5 ? (sizeVultrColum = 5) : sizeVultrColum;
-
-  const murkup = `
+  window.innerWidth >= 768
+    ? (murkup = `
+  <div class = "column__box">
+    <div class="column column-vultr" style="width :${
+      sizeVultrColum * 10
+    }px"></div>
+    <p class="column__text">${sizeVultrColum}$</p>
+  </div>
+    `)
+    : (murkup = `
   <div class = "column__box">
     <div class="column column-vultr" style="height :${
       sizeVultrColum * 10
     }px"></div>
     <p class="column__text">${sizeVultrColum}$</p>
   </div>
-    `;
+    `);
   refs.columList.children[3].innerHTML = murkup;
 }
-
-
