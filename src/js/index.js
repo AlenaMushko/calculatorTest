@@ -1,23 +1,28 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { refs } from './refs';
 import { formHandler } from './formHandler';
+import { minColum } from './minColum';
 
-let storage = 0;
-let transfer = 0;
 
-let sizeBackblazeColum = 0;
-let sizeBunnyColum = 0;
-let sizeScalewayColum = 0;
-let sizeVultrColum = 0;
+ let storage = 0;
+ let transfer = 0;
+
+export let sizeBackblazeColum = 0;
+export let sizeBunnyColum = 0;
+export let sizeScalewayColum = 0;
+export let sizeVultrColum = 0;
 
 refs.calcFform.addEventListener('input', onHendlerChangeCalcForm);
-refs.formBunny.addEventListener('input', e => bunnyColum(e.currentTarget));
-refs.formScaleway.addEventListener('input', e =>
-  scalewayColum(e.currentTarget)
-);
+refs.formBunny.addEventListener('input', e => {
+  bunnyColum(e.currentTarget);
+  minColum(e.currentTarget);
+});
+
+refs.formScaleway.addEventListener('input', e => {
+  scalewayColum(e.currentTarget);
+  minColum(e.currentTarget);
+});
 
 function onHendlerChangeCalcForm(e) {
- 
   refs.column.classList.remove('orangered');
 
   storage = Number(refs.calcFform.elements.storage.value);
@@ -30,40 +35,29 @@ function onHendlerChangeCalcForm(e) {
   vultrColum();
   minColum(e.currentTarget);
 
-console.log(refs.columnScaleway);
+  const minHeigthColum = minColum(e.currentTarget);
+  const columItems = refs.columList.children;
 
-  const colums = {
-    backblaze: refs.columnBackblaze,
-    bunny: refs.columnBunny,
-    scaleway: refs.columnScaleway,
-    vultr: refs.columnVultr,
-  };
-
-  const columsKey = Object.entries(colums);
-  console.log(columsKey);
-//  const minColum = minColum(e.currentTarget);
-  for (let i = 0; i < columsKey.length; i += 1) {
-   
-    // if (minColum !== columsKey[i][0]) {
-      // console.log(minColum);
-      // console.log(columsKey[i][0]);
-      // console.log(columsKey[i][1]);
-      // return columsKey[i][1].classList.add('orangered');
-    // }
+  for (let i = 0; i < columItems.length; i += 1) {
+    columItems[i].classList.contains(`${minHeigthColum}`)
+      ? columItems[i].classList.add('orangered')
+      : columItems[i].classList.remove('orangered');
   }
 }
 
 function backblazeColum() {
-  sizeBackblazeColum = (storage * 0.005 + transfer * 0.01).toFixed(2);
+sizeBackblazeColum = (storage * 0.005 + transfer * 0.01).toFixed(2);
   sizeBackblazeColum <= 7 ? (sizeBackblazeColum = '7') : sizeBackblazeColum;
 
   const murkup = `
-  <div class = "calc__column">
-     <div class="column column-backblaze" style="height :${sizeBackblazeColum * 10}px"></div>
-     <p class="calc__text">${sizeBackblazeColum}$</p>
+  <div class = "column__box">
+     <div class="column column-backblaze" style="height :${
+       sizeBackblazeColum * 10
+     }px"></div>
+     <p class="column__text">${sizeBackblazeColum}$</p>
     </div>
      `;
-  refs.text.children[0].innerHTML = murkup;
+  refs.columList.children[0].innerHTML = murkup;
 }
 
 function bunnyColum(form) {
@@ -85,12 +79,12 @@ function bunnyColum(form) {
   sizeBunnyColum <= 10 ? sizeBunnyColum : (sizeBunnyColum = '10');
 
   const murkup = `
- <div class = "calc__column">
-    <div class="column column-bunny" style="height :${sizeBunnyColum * 10}px"></div>
-    <p class="calc__text">${sizeBunnyColum}$</p>
+ <div class = "column__box">
+    <div class="column" style="height :${sizeBunnyColum * 10}px"></div>
+    <p class="column__text">${sizeBunnyColum}$</p>
  </div>
   `;
-  refs.text.children[1].innerHTML = murkup;
+  refs.columList.children[1].innerHTML = murkup;
 }
 
 function scalewayColum(form) {
@@ -118,42 +112,29 @@ function scalewayColum(form) {
   storage <= 75 ? (sizeScalewayColum = 0) : sizeScalewayColum;
 
   const murkup = `
-  <div class = "calc__column">
-    <div class="column column-scaleway" style="height :${sizeScalewayColum * 10}px"></div>
-    <p class="calc__text">${sizeScalewayColum}$</p>
+  <div class = "column__box">
+    <div class="column column-scaleway" style="height :${
+      sizeScalewayColum * 10
+    }px"></div>
+    <p class="column__text">${sizeScalewayColum}$</p>
   </div>
     `;
-  refs.text.children[2].innerHTML = murkup;
+  refs.columList.children[2].innerHTML = murkup;
 }
 
 function vultrColum() {
-  sizeVultrColum = (storage * 0.01 + transfer * 0.01).toFixed(2);
+ sizeVultrColum = (storage * 0.01 + transfer * 0.01).toFixed(2);
   sizeVultrColum <= 5 ? (sizeVultrColum = 5) : sizeVultrColum;
 
   const murkup = `
-  <div class = "calc__column">
-    <div class="column column-vultr" style="height :${sizeVultrColum * 10}px"></div>
-    <p class="calc__text">${sizeVultrColum}$</p>
+  <div class = "column__box">
+    <div class="column column-vultr" style="height :${
+      sizeVultrColum * 10
+    }px"></div>
+    <p class="column__text">${sizeVultrColum}$</p>
   </div>
     `;
-  refs.text.children[3].innerHTML = murkup;
+  refs.columList.children[3].innerHTML = murkup;
 }
 
-function minColum(colum) {
-  const sizes = {
-    backblaze: Number(sizeBackblazeColum),
-    bunny: Number(sizeBunnyColum),
-    scaleway: Number(sizeScalewayColum),
-    vultr: Number(sizeVultrColum),
-  };
-
-  let objSizes = Object.entries(sizes);
-  for (let i = 0; i < objSizes.length; i += 1) {
-    if (objSizes[i][1] < objSizes[i + 1][1]) {
-      let minColumName = objSizes[i][0];
-      Notify.info(`The lowest cost of services in ${minColumName}.com`);
-      return minColumName;
-    }
-  }
-}
 

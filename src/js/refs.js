@@ -1,5 +1,5 @@
 export const refs = {
-  text: document.querySelector('.calc__list'),
+  columList: document.querySelector('.colum__list'),
   column: document.querySelector('.column'),
   formBunny: document.querySelector('.form-bunny'),
   formScaleway: document.querySelector('.form-scaleway'),
@@ -8,10 +8,10 @@ export const refs = {
   inputMulti: document.querySelector('.form__input--multi'),
   inputSingle: document.querySelector('.form__input--single'),
   
-  columnVultr: document.querySelector('.column-vultr'),
-  columnScaleway: document.querySelector('.column-scaleway'),
-  columnBunny: document.querySelector('.column-bunny'),
-  columnBackblaze: document.querySelector('.column-backblaze'),
+  columnVultr: document.querySelector('.vultr'),
+  columnScaleway: document.querySelector('.scaleway'),
+  columnBunny: document.querySelector('.bunny'),
+  columnBackblaze: document.querySelector('.backblaze'),
   
   radio: document.querySelector('.radio'),
   calcFform: document.querySelector('.calc__form'),
