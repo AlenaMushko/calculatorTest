@@ -1,37 +1,95 @@
-<article class="example" id="uk">
-  <h1>HTML-partials</h1>
+<section class="calc">
+  <div class="container">
+    <div class="calc__wrap">
+      <ul class="calc__list">
+        <li>
+          <p class="calc__text"></p>
+          <div class="column column-backblaze" ></div>
+          <svg class="calc__img">
+            <use
+              width="20"
+              height="20"
+              href="./images/backblaze.svg#backblaze"
+            ></use>
+          </svg>
+          <h2 class="calc__title">backblaze</h2>
+        </li>
 
-  <!--
-    ❗️❗️❗️ The path to images from the HTML partial
-    is the same as from the index.html file
-  -->
-  <img src="images/logo.png" alt="" width="320" />
+        <li>
+          <p class="calc__text"></p>
+          <div class="column column-bunny"></div>
+          <svg class="calc__img">
+            <use
+              class="bunny-svg"
+              width="45"
+              height="45"
+              href="./images/bunny.svg#bunny"
+            ></use>
+          </svg>
+          <h2 class="calc__title">bunny</h2>
+          <fporm class="form-bunny">
+            <label class="form__label"
+              >HDD<input class="form__input form__input--hdd checked" type="radio" name="name" value="HDD" checked
+            /></label>
+            <label class="form__label">SSD<input class="form__input form__input--ssd" type="radio" name="name" value="SSD" /></label>
+          </fporm>
+        </li>
 
-  <p>
-    The
-    <a
-      href="https://github.com/posthtml/posthtml-include"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      posthtml-include
-    </a>
-    plugin allows you to add code from other HTML files (fragments) to HTML page
-    files. Fragments are stored in the <code>src/partials</code> folder. The
-    addition occurs when compiling page files, such as <code>index.html</code>.
-  </p>
+        <li>
+          <p class="calc__text"></p>
+          <div class="column column-scaleway"></div>
+          <svg class="calc__img">
+            <use
+              class="scaleway-img"
+              width="40"
+              height="40"
+              href="./images/scaleway.svg#scaleway"
+            ></use>
+          </svg>
+          <h2 class="calc__title">scaleway</h2>
+          <fporm class="form-scaleway">
+            <label class="form__label">Multi<input class="form__input form__input--multi" type="radio" name="quntity" value="Multi" /></label>
+            <label class="form__label"
+              >Single<input class="form__input form__input--single checked" type="radio" name="quntity" value="Single" checked
+            /></label>
+          </fporm>
+        </li>
 
-  <p>
-    This <code>example.html</code> file is an example of such a snippet, with
-    the markup of a certain part of the main page. This is very convenient for
-    team development on student projects, when several people write in one HTML
-    file at once.
-  </p>
+        <li>
+          <p class="calc__text"></p>
+          <div class="column column-vultr"></div>
+          <svg class="calc__img">
+            <use href="./images/vultr.svg#vult"></use>
+          </svg>
+          <h2 class="calc__title">vultr</h2>
+        </li>
+      </ul>
+      <div class="line"></div>
+    </div>
 
-  <p>
-    The syntax for adding a fragment to the main file is:
-    <code> &lt;include src="./partials/filename.html"&gt;&lt;/include&gt;</code>
-  </p>
-
-  <div class="background"></div>
-</article>
+    <form class="calc__form">
+      <label class="calc__lable calc__lable--first"
+        >Storage:<span class="calc__span calc__span--storage"></span>GB
+        <input
+          class="calc__input"
+          type="range"
+          name="storage"
+          min="0"
+          max="1000"
+          step="1"
+          value="0"
+      /></label>
+      <label class="calc__lable calc__lable--second"
+        >Transfer:<span class="calc__span calc__span--transfer"></span>GB
+        <input
+          class="calc__input"
+          type="range"
+          name="transfer"
+          min="0"
+          max="1000"
+          step="1"
+          value="0"
+      /></label>
+    </form>
+  </div>
+</section>
