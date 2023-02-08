@@ -1,4 +1,3 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { refs } from './refs';
 import { formHandler } from './formHandler';
 import { minColum } from './minColum';
@@ -16,18 +15,12 @@ refs.formBunny.addEventListener('input', e => {
   e.preventDefault();
   bunnyColum(e.currentTarget);
   minColum(e.currentTarget);
-  Notify.info(
-    `The lowest cost of services in ${minColum(e.currentTarget)}.com`
-  );
 });
 
 refs.formScaleway.addEventListener('input', e => {
   e.preventDefault();
   scalewayColum(e.currentTarget);
   minColum(e.currentTarget);
-  Notify.info(
-    `The lowest cost of services in ${minColum(e.currentTarget)}.com`
-  );
 });
 
 function onHendlerChangeCalcForm(e) {
@@ -44,6 +37,7 @@ function onHendlerChangeCalcForm(e) {
   vultrColum();
   minColum(e.currentTarget);
 
+
   const minHeigthColum = minColum(e.currentTarget);
   const columItems = refs.columList.children;
 
@@ -52,7 +46,9 @@ function onHendlerChangeCalcForm(e) {
       ? columItems[i].classList.add('orangered')
       : columItems[i].classList.remove('orangered');
   }
-  Notify.info(`The lowest cost of services in ${minHeigthColum}.com`);
+
+
+
 }
 
 function backblazeColum() {
@@ -62,17 +58,15 @@ function backblazeColum() {
   window.innerWidth >= 768
     ? (murkup = `
   <div class = "column__box">
-     <div class="column column-backblaze" style="width :${
-       sizeBackblazeColum * 10
-     }px"></div>
+     <div class="column column-backblaze" style="width :${sizeBackblazeColum * 10
+      }px"></div>
      <p class="column__text">${sizeBackblazeColum}$</p>
     </div>
      `)
     : (murkup = `
   <div class = "column__box">
-     <div class="column column-backblaze" style="height :${
-       sizeBackblazeColum * 10
-     }px"></div>
+     <div class="column column-backblaze" style="height :${sizeBackblazeColum * 10
+      }px"></div>
      <p class="column__text">${sizeBackblazeColum}$</p>
     </div>
      `);
@@ -128,29 +122,27 @@ function scalewayColum(form) {
 
   inputMulti.classList.contains('checked')
     ? (sizeScalewayColum = (
-        (storage - 75) * 0.06 +
-        (transfer - 75) * 0.02
-      ).toFixed(2))
+      (storage - 75) * 0.06 +
+      (transfer - 75) * 0.02
+    ).toFixed(2))
     : (sizeScalewayColum = (
-        (storage - 75) * 0.03 +
-        (transfer - 75) * 0.02
-      ).toFixed(2));
+      (storage - 75) * 0.03 +
+      (transfer - 75) * 0.02
+    ).toFixed(2));
 
   storage <= 75 ? (sizeScalewayColum = 0) : sizeScalewayColum;
   window.innerWidth >= 768
     ? (murkup = `
   <div class = "column__box">
-    <div class="column column-scaleway" style="width :${
-      sizeScalewayColum * 10
-    }px"></div>
+    <div class="column column-scaleway" style="width :${sizeScalewayColum * 10
+      }px"></div>
     <p class="column__text">${sizeScalewayColum}$</p>
   </div>
     `)
     : (murkup = `
   <div class = "column__box">
-    <div class="column column-scaleway" style="height :${
-      sizeScalewayColum * 10
-    }px"></div>
+    <div class="column column-scaleway" style="height :${sizeScalewayColum * 10
+      }px"></div>
     <p class="column__text">${sizeScalewayColum}$</p>
   </div>
     `);
@@ -164,17 +156,15 @@ function vultrColum() {
   window.innerWidth >= 768
     ? (murkup = `
   <div class = "column__box">
-    <div class="column column-vultr" style="width :${
-      sizeVultrColum * 10
-    }px"></div>
+    <div class="column column-vultr" style="width :${sizeVultrColum * 10
+      }px"></div>
     <p class="column__text">${sizeVultrColum}$</p>
   </div>
     `)
     : (murkup = `
   <div class = "column__box">
-    <div class="column column-vultr" style="height :${
-      sizeVultrColum * 10
-    }px"></div>
+    <div class="column column-vultr" style="height :${sizeVultrColum * 10
+      }px"></div>
     <p class="column__text">${sizeVultrColum}$</p>
   </div>
     `);
