@@ -13,6 +13,7 @@ export let sizeVultrColum = 0;
 
 refs.calcFform.addEventListener('input', onHendlerChangeCalcForm);
 refs.formBunny.addEventListener('input', e => {
+  e.preventDefault();
   bunnyColum(e.currentTarget);
   minColum(e.currentTarget);
   Notify.info(
@@ -21,6 +22,7 @@ refs.formBunny.addEventListener('input', e => {
 });
 
 refs.formScaleway.addEventListener('input', e => {
+  e.preventDefault();
   scalewayColum(e.currentTarget);
   minColum(e.currentTarget);
   Notify.info(
@@ -29,6 +31,7 @@ refs.formScaleway.addEventListener('input', e => {
 });
 
 function onHendlerChangeCalcForm(e) {
+  e.preventDefault();
   refs.columList.classList.remove('orangered');
 
   storage = Number(refs.calcFform.elements.storage.value);
